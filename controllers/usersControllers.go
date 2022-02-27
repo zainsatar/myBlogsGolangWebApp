@@ -11,7 +11,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const connectionstring = "mongodb+srv://zainsattar17:12345@cluster0.cbczv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+//write your database username and password use set in mongodb atlas
+const connectionstring = "mongodb+srv://username:password@cluster0.cbczv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 const dbName = "BlogSpot"
 const collectionName = "Users"
