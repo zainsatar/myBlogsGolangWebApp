@@ -1,0 +1,114 @@
+<html>
+<head>
+    <title>My Account</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles3.css">
+
+<script language="JavaScript" type="text/javaScript">
+    function validate(){
+	    var flag=false;
+        if ( document.myAccount.firstName.value ==""||document.myAccount.firstName.value==null )      
+        {
+            document.getElementById("error_firstName").innerHTML="*Please enter valid First Name.";
+	    flag=true;
+    	} 
+        if ( document.myAccount.lastName.value ==""||document.myAccount.lastName.value==null )      
+        {
+            document.getElementById("error_lastName").innerHTML="*Please enter valid Last Name.";
+	    flag=true;
+    	} 
+	    if ( document.myAccount.email.value ==""||document.myAccount.email.value==null )      
+        {
+            document.getElementById("error_email").innerHTML="*Please enter valid email address.";
+	    flag=true;
+    	}  
+   	    else if(document.myAccount.email.value != "")
+    	{
+        	var g=document.myAccount.email.value;
+		    var at=g.indexOf("@");
+         	dot=g.lastIndexOf(".");
+         	if(at<=0 || dot<=0 || dot<=at+1 || dot==g.length-1)  
+         	{
+            		document.getElementById("error_email").innerHTML = "*Invalid email address";
+			flag=true;
+         	}
+		    else{
+			    document.getElementById("error_email").innerHTML = "";
+	    	}
+        }
+    if(document.myAccount.currentPassword.value==""||document.myAccount.currentPassword.value==null){
+		document.getElementById("error_currentPassword").innerHTML="*Please enter your current password";
+		flag=true;
+	}
+	else{
+		document.getElementById("error_currntPassword").innerHTML="";
+	}
+	if(document.myAccount.newPassword.value!=document.myAccount.cPassword.value){
+		document.getElementById("error_cPassword").innerHTML="*Passwords does not match.";
+		flag=true;
+	}
+	else{
+		document.getElementById("error_cPassword").innerHTML="";
+	}
+	if( flag==true){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+</script>
+</head>
+<body>
+    {{template "homeNavbar"}}
+    <div class="myAccountDiv">
+    <form id="myAccount"name="myAccount" enctype="multipart/form-data" method="POST" onsubmit="return validate()">
+    {{if .Picture}}
+		<img id="picture"  src="data:image/png;base64, {{.Picture}}"alt="">
+	{{else}}
+		<img id="picture"  src="./static/default.jpeg"alt="No image found">
+	{{end}}
+    <br>
+    <input type="file" name="profilePic" id="profilePic" accept="image/png,image/jpeg,image/jpg"></input>
+    <br>
+    <br>
+    <label>First Name:</label>
+    <input type="text" class="form-control" id="name" name="firstName" value="{{.FirstName}}"></input>
+    <span class="error" id="error_firstName"></span>
+    <br>
+    <br>
+    <label>Last Name:</label>
+    <input type="text" class="form-control" id="name" name="lastName" value="{{.LastName}}"></input>
+    <span class="error" id="error_lastName"></span>
+    <br>
+    <br>
+    <label>Bio:</label>
+    <textarea id="bio" class="form-control" name="bio" rows="5" cols="21">{{.Bio}}</textarea>
+    <br>
+    <label>Email:</label>
+    <input type="text" class="form-control" id="email" name="email" value="{{.Email}}"></input>
+    <span class="error" id="error_email"></span>
+    <br>
+    <br>
+    <label>Current Password:</label>
+    <input type="password" class="form-control" id="currentPassword" name="currentPassword"></input>
+    <span class="error" id="error_currentPassword"></span>
+    <br>
+    <br>
+    <label>New Password:</label>
+    <input type="password" class="form-control" id="newPassword" name="newPassword"></input>
+    <span class="error" id="error_newPassword"></span>
+    <br>
+    <br>
+    <label>Confirm Password:</label>
+    <input type="password" class="form-control" id="cPassword" name="cPassword"></input>
+    <span class="error" id="error_cPassword"></span>
+    <br>
+    <br>
+    <input type="submit" class="btn btn-outline-success btn-lg btn-block" id="save" name="save" value="Save"></input>
+    </form>
+    </div>
+   
+</body>
+</html>

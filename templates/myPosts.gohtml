@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>My Posts</title>
+		 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		 <link rel="stylesheet" href="/static/styles.css"> 
+	</head>
+	<body>
+	
+	{{template "homeNavbar"}}
+	<div class="parent" id="home">
+		<div class="child" name="profile">
+			<h1 style="text-align:center">My Posts</h1>
+		</div>
+		<div class="child" name="posts">
+			{{if .}}
+			{{$posts :=.}}
+			{{range $index,$post:=$posts}}
+				<div class=post>
+					<div class="head">
+						<h5 style="margin-top:2%;margin-left:2% ;font-size:1.5vw">Author: {{$post.author}}</h5>
+						<p style="text-align:right;margin-top:-6%;margin-right:2%">{{$post.date}}<p>
+					</div>
+
+					<div class="title">
+						<h2 id="title">{{$post.title}}</h2>
+						<P id="content">&emsp;&emsp;&emsp;&emsp;{{$post.content}}</p>
+					</div>
+				</div>
+			{{end}}
+			{{else}}
+			<p class=post>No Post Found</p>
+			{{end}}
+		</div>
+	</div>
+		
+	</body>
+</html>

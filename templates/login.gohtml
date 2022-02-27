@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Login</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+	<script src="https://kit.fontawesome.com/fdfa5420cb.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/styles.css">
+
+<script language="JavaScript" type="text/javaScript">
+function validate(){
+	var flag=false;
+	if ( document.loginForm.email.value ==""||document.loginForm.email.value==null )      
+        {
+            document.getElementById("error_email").innerHTML="*Please enter email address.";
+	    flag=true;
+    	}  
+   	else if(document.loginForm.email.value != "")
+    	{
+        	var g=document.loginForm.email.value;
+		var at=g.indexOf("@");
+         	dot=g.lastIndexOf(".");
+         	if(at<=0 || dot<=0 || dot<=at+1 || dot==g.length-1)  
+         	{
+            		document.getElementById("error_email").innerHTML = "*invalid email address";
+			flag=true;
+         	}
+		else{
+			document.getElementById("error_email").innerHTML = "";
+		}
+	}
+	if(document.loginForm.password.value==""||document.loginForm.password.value==null){
+		document.getElementById("error_password").innerHTML="*Please enter password.";
+		flag=true;
+	}
+	else{
+		document.getElementById("error_password").innerHTML="";
+	}
+	if( flag==true){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+</script>
+</head>
+
+<body>
+	<div class="parent">
+
+	<div class="child" name="child1">
+	<br>
+	<div class="signupDiv">
+	<form name="loginForm" class="signupForm"align="center" method="POST" onsubmit="return validate()">
+	<h1 id="signupHeading">Login</h1>
+	<br>
+	<input type="text" class="form-control" name="email" placeholder="Email:"></input>
+	<span class="error" id="error_email" ></span>
+	<br>
+	<br>
+	<input type="password" class="form-control" name="password" placeholder="Password"></input>
+	<span class="error" id="error_password" ></span>
+	<br>
+	<br>
+	<input type="submit" class="btn btn-outline-success btn-lg btn-block" id="login"name="login" value="Login"></input>
+	<br>
+	<p>Don't have an account? <a href="/signup">Signup</a></p>
+	{{if .}}{{$msg:= .}}
+	<div class="alert">
+	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  	{{$msg}}
+	</div>
+	{{end}}
+	</form>
+	</div>
+	</div>
+	<div class="child" name="child2">	
+	<div id="about">
+	<h1 id="aboutHeading">MyBlogs</h1>
+		<p>Welcome to MyBlogs.MyBlogs  is a social blogging or short posting website. It is developed and founded by <b>Zain Sattar</b>. Users can collaborate and interact with each other by submitting the posts.Whether sharing your expertise, breaking news, or whatever’s on your mind, you’re in good company on MyBlogs. Sign up to discover why millions of people have published their passions here.</p>
+	</div>
+	<div id="contact">
+		<a class="links" href = "mailto: zainsattar17@gmail.com"><i class="fa-solid fa-envelope fa-2xl"></i></a>
+		<a class="links" href="https://github.com/bsef19a514"><i class="fa-brands fa-github fa-2xl"></i></a>
+		<a class="links" href="https://www.instagram.com/_zainsattar"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+		<a class="links" href="https://www.facebook.com/zain.sattar.73345"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+	</div>
+	</div>
+	</div>
+<body>
+</html>

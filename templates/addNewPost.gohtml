@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Add New Post</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="./static/styles2.css">
+
+<script language="JavaScript" type="text/javaScript">
+function validate(){
+	var flag=false;
+	if ( document.addNewPost.title.value ==""|| document.addNewPost.title.value ==null )      
+        {
+            document.getElementById("error_title").innerHTML="*Please write the title.";
+	    flag=true;
+    	}
+    if(document.addNewPost.content.value ==""|| document.addNewPost.content.value ==null){
+        document.getElementById("error_content").innerHTML="*Please write the content.";
+	    flag=true;
+    }
+    if( flag==true){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+</script>
+</head>
+<body>
+    {{template "homeNavbar"}}
+    <div class="addNewPostDiv">
+    <form name="addNewPost" method="POST" onsubmit="return validate()">
+    <input type="text" class="login__input"id="title" name="title" placeHolder="Title"></input>
+    <br>
+    <span class="error" id="error_title" ></span>
+    <br>
+    <textarea  class="login__input" id="content" name="content" rows="15" cols="50" placeHolder="Write Here..." ></textarea>
+    <br>
+    <span class="error" id="error_content" ></span>
+    <br>
+    <input type="submit" class="btn btn-outline-success" id="post"name="post" value="Post"></input>
+    </form>
+    </div>
+</body>
+</html>

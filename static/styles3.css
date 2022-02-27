@@ -1,0 +1,51 @@
+body {
+    font-family: Roboto, Helvetica, sans-serif;
+    color: hsla(0, 0%, 100%, .87);
+    background-color: #242a30;
+    font-size: 14px;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    /* border:1px solid grey; */
+    border-radius: 60px;
+    margin-top: 3%;
+}
+
+
+/* .form-control {
+    margin-top: -2%;
+} */
+
+.form-control {
+    font-size: small;
+    height: 4vh;
+    resize: none;
+}
+
+.error {
+    color: rgba(255, 0, 0, 0.795);
+}
+
+.myAccountDiv {
+    border-right: 1px solid #31373d;
+    line-height: 15px;
+    width: 350px;
+}
+
+#myAccount {
+    width: 80%;
+    margin-left: 5%;
+}
+
+#profilePic {
+    margin-top: 10px;
+}
+
+#save {
+    font-size: small;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
